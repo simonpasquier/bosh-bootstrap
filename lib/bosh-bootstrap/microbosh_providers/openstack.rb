@@ -54,7 +54,8 @@ module Bosh::Bootstrap::MicroboshProviders
         "region"=>region,
         "default_security_groups"=>security_groups,
         "default_key_name"=>microbosh_name,
-        "private_key"=>private_key_path}
+        "private_key"=>private_key_path,
+        "state_timeout"=>600}
     end
 
     def region
