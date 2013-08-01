@@ -5,10 +5,11 @@ module Bosh::Bootstrap
   class ThorCli < Thor
 
     desc "deploy", "Configure and bootstrap a micro bosh; or deploy/upgrade existing Micro Bosh"
+    option :stemcell_url, :desc => "Alternative stemcell URL for running Micro Bosh"
     def deploy
       require "bosh-bootstrap/cli/commands/deploy"
       deploy_cmd = Bosh::Bootstrap::Cli::Commands::Deploy.new
-      deploy_cmd.perform
+      deploy_cmd.perform(options[:stemcell_url])
     end
 
     desc "ssh", "SSH into micro bosh"

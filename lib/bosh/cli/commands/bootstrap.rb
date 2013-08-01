@@ -17,10 +17,11 @@ module Bosh::Cli::Command
 
     usage "bootstrap deploy"
     desc "Configure and bootstrap a micro bosh; or deploy/upgrade existing Micro Bosh"
+    option "--stemcell-url http://example.com/stemcell.tgz"
     def deploy
       require "bosh-bootstrap/cli/commands/deploy"
       deploy_cmd = Bosh::Bootstrap::Cli::Commands::Deploy.new
-      deploy_cmd.perform
+      deploy_cmd.perform(options[:stemcell_url])
     end
 
     usage "bootstrap ssh"

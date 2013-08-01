@@ -13,8 +13,9 @@ class Bosh::Bootstrap::Cli::Commands::Deploy
   # * select_public_image_or_download_stemcell # download if stemcell
   # * create_microbosh_manifest
   # * microbosh_deploy
-  def perform
+  def perform(stemcell_uri=nil)
     settings.set_default("bosh.name", "firstbosh")
+    settings.set_default("bosh.stemcell_uri", stemcell_uri) unless stemcell_uri.nil?
     save_settings!
 
     select_provider
